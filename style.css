@@ -1,0 +1,1379 @@
+/* ==========================================================================
+   FoodSave - Modern Food-Sharing Theme
+   Light Green & Cream Gradient Background, Dark Green Buttons,
+   White Rounded Cards with Soft Shadows, Attractive Food Icons & Smooth Hover Animations
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Color Palette
+   -------------------------------------------------------------------------- */
+:root {
+  /* Rich Dark Forest Green (Primary Brand & Buttons) */
+  --green-darkest: #0a2916;
+  --green-darker:  #0e3d21;
+  --green-dark:    #14532d;   /* Core Dark Green Button Color */
+  --green-base:    #166534;
+  --green-mid:     #15803d;
+  --green-bright:  #10b981;
+  --green-mint:    #34d399;
+  --green-soft:    #a7f3d0;
+  --green-tint:    #dcfce7;
+  --green-wash:    #ecfdf5;
+
+  /* Warm Cream & Vanilla Palette */
+  --cream-pure:    #ffffff;
+  --cream-surface: #fffdf9;
+  --cream-50:      #fdfbf7;
+  --cream-100:     #faf5eb;
+  --cream-200:     #f4ebdb;
+  --cream-amber:   #fef3c7;
+  --cream-gold:    #fde68a;
+
+  /* Modern Neutral Text & Borders */
+  --gray-900: #0f172a;
+  --gray-800: #1e293b;
+  --gray-700: #334155;
+  --gray-600: #475569;
+  --gray-500: #64748b;
+  --gray-400: #94a3b8;
+  --gray-300: #cbd5e1;
+  --gray-200: #e2e8f0;
+  --gray-100: #f1f5f9;
+
+  /* Functional Accents */
+  --danger:       #e11d48;
+  --danger-light: #ffe4e6;
+  --warm-orange:  #ea580c;
+  --warm-peach:   #ffedd5;
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Soft Organic Shadows */
+  --shadow-xs:   0 1px 3px rgba(20, 83, 45, 0.05);
+  --shadow-soft: 0 4px 16px -2px rgba(20, 83, 45, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 10px 30px -5px rgba(20, 83, 45, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 20px 40px -8px rgba(20, 83, 45, 0.15), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+  --shadow-btn:   0 4px 14px rgba(20, 83, 45, 0.28);
+  --shadow-btn-hover: 0 8px 22px rgba(20, 83, 45, 0.38);
+
+  /* Rounded Borders */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;     /* Smooth rounded corners for modern cards */
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  /* Smooth Silky Transitions */
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Organic Background (Light Green & Cream Gradient)
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  /* Beautiful light green and warm cream multi-layer gradient background */
+  background-color: #f7faf7;
+  background-image: 
+    radial-gradient(ellipse at 10% 8%, rgba(220, 252, 231, 0.65) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 25%, rgba(254, 249, 215, 0.75) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 65%, rgba(236, 253, 245, 0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 90%, rgba(254, 243, 199, 0.6) 0%, transparent 45%),
+    linear-gradient(145deg, #f7fcf8 0%, #edf8f1 35%, #fffdf5 70%, #f3faf5 100%);
+  background-attachment: fixed;
+  color: var(--gray-800);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------------------------------
+   3. Main Container & Typography
+   -------------------------------------------------------------------------- */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+.section-container {
+  padding: 4.5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+.subheading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green-dark);
+  background: linear-gradient(135deg, var(--green-tint) 0%, var(--cream-amber) 100%);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.85rem;
+  border: 1px solid rgba(20, 83, 45, 0.12);
+  box-shadow: var(--shadow-xs);
+}
+
+.subheading::before {
+  content: '🌾';
+  font-size: 0.95rem;
+}
+
+.section-header h2 {
+  font-size: 2.35rem;
+  font-weight: 800;
+  color: var(--green-darkest);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  color: var(--gray-600);
+  font-size: 1.08rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. Buttons (Sophisticated Dark Green & Smooth Hover)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.55rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+/* Dark Green Primary Button */
+.btn-primary {
+  background: linear-gradient(145deg, #166534 0%, #14532d 100%);
+  color: var(--cream-pure);
+  box-shadow: var(--shadow-btn);
+  border-color: #14532d;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(145deg, #14532d 0%, #0d3b1f 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
+  color: #ffffff;
+}
+
+.btn-primary:hover .btn-icon {
+  transform: translateY(-1px) scale(1.08);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(20, 83, 45, 0.25);
+}
+
+/* Secondary Button with Warm Cream & Dark Green Accent */
+.btn-secondary {
+  background-color: var(--cream-pure);
+  color: var(--green-dark);
+  border-color: rgba(20, 83, 45, 0.25);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-secondary:hover {
+  background-color: var(--cream-50);
+  border-color: var(--green-dark);
+  color: var(--green-darkest);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-secondary:hover .btn-icon {
+  transform: rotate(6deg);
+}
+
+/* Outline / Reset Button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--gray-600);
+  border-color: var(--gray-300);
+}
+
+.btn-outline:hover {
+  background-color: var(--cream-100);
+  color: var(--gray-800);
+  border-color: var(--gray-400);
+  transform: translateY(-1px);
+}
+
+.btn-lg {
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
+}
+
+.btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+/* --------------------------------------------------------------------------
+   5. Sticky Glass Navbar
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(20, 83, 45, 0.08);
+  box-shadow: 0 2px 10px rgba(20, 83, 45, 0.03);
+  transition: var(--transition);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--green-darkest);
+  letter-spacing: -0.01em;
+}
+
+.brand-logo .logo-icon {
+  width: 30px;
+  height: 30px;
+  color: var(--green-base);
+  filter: drop-shadow(0 2px 4px rgba(22, 101, 52, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover .logo-icon {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.brand-logo strong {
+  color: var(--green-mid);
+  background: linear-gradient(135deg, var(--green-base) 0%, var(--green-bright) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.nav-links a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--gray-700);
+  transition: var(--transition);
+  position: relative;
+  padding: 0.2rem 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--green-dark);
+  border-radius: var(--radius-full);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--green-dark);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero Section (Warm Light Green & Cream Gradient)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  background: linear-gradient(180deg, rgba(236, 253, 245, 0.7) 0%, rgba(254, 252, 243, 0.8) 65%, rgba(247, 250, 247, 0.95) 100%);
+  border-bottom: 1px solid rgba(20, 83, 45, 0.08);
+  padding: 5.5rem 1.5rem 4.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Decorative background glow */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(254, 249, 195, 0.6) 0%, rgba(187, 247, 208, 0.3) 50%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, var(--cream-100) 100%);
+  color: var(--green-dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(20, 83, 45, 0.15);
+  box-shadow: var(--shadow-xs);
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.hero-title {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: var(--green-darkest);
+  line-height: 1.15;
+  margin-bottom: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+  font-size: 1.22rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3.75rem;
+}
+
+/* Impact Stats - White Rounded Cards with Soft Shadows */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+.stat-card {
+  background: var(--cream-pure);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  border: 1px solid rgba(20, 83, 45, 0.08);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: rgba(20, 83, 45, 0.18);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.15rem;
+  font-weight: 800;
+  color: var(--green-dark);
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+.stat-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gray-500);
+}
+
+/* --------------------------------------------------------------------------
+   7. Share Food Form Section (White Rounded Card with Soft Shadow)
+   -------------------------------------------------------------------------- */
+.form-section {
+  background-color: var(--cream-pure);
+  border: 1px solid rgba(20, 83, 45, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 3.25rem 2.75rem;
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.form-section:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.form-wrapper {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.food-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--green-darkest);
+}
+
+.required {
+  color: var(--danger);
+  margin-left: 2px;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1.1rem;
+  width: 19px;
+  height: 19px;
+  color: var(--green-mid);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.input-with-icon input,
+.input-with-icon select {
+  padding-left: 2.85rem !important;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.82rem 1.1rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  background-color: var(--cream-surface);
+  color: var(--gray-800);
+  transition: var(--transition);
+  outline: none;
+  font-size: 0.98rem;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: var(--green-soft);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green-dark);
+  background-color: var(--cream-pure);
+  box-shadow: 0 0 0 4px rgba(20, 83, 45, 0.12);
+}
+
+.form-group input.invalid,
+.form-group select.invalid {
+  border-color: var(--danger);
+  background-color: #fff9f9;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.1);
+}
+
+.error-msg {
+  display: none;
+  color: var(--danger);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.error-msg.visible {
+  display: block;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.btn-submit {
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   8. Available Food Listings Section
+   -------------------------------------------------------------------------- */
+.listings-section {
+  padding-top: 5rem;
+}
+
+.listings-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.2rem;
+  flex-wrap: wrap;
+}
+
+.listings-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--cream-pure) 0%, var(--green-wash) 100%);
+  color: var(--green-dark);
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 1px solid rgba(20, 83, 45, 0.15);
+  box-shadow: var(--shadow-xs);
+}
+
+.dot-indicator {
+  width: 9px;
+  height: 9px;
+  background-color: var(--green-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Search and Category Filter Controls */
+.controls-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 2.75rem;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.2rem;
+  width: 21px;
+  height: 21px;
+  color: var(--green-mid);
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.92rem 3rem 0.92rem 3.2rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  background-color: var(--cream-pure);
+  font-size: 1rem;
+  color: var(--gray-800);
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition);
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: var(--green-dark);
+  box-shadow: 0 0 0 4px rgba(20, 83, 45, 0.12);
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 1.1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--gray-400);
+  cursor: pointer;
+  display: none;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.clear-search-btn:hover {
+  color: var(--gray-700);
+}
+
+.clear-search-btn.visible {
+  display: block;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  scrollbar-width: none;
+}
+
+.filter-pills::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-btn {
+  background-color: var(--cream-pure);
+  border: 1.5px solid var(--gray-200);
+  color: var(--gray-700);
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+  box-shadow: var(--shadow-xs);
+}
+
+.filter-btn:hover {
+  border-color: var(--green-dark);
+  color: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.filter-btn.active {
+  background: linear-gradient(145deg, #166534 0%, #14532d 100%);
+  border-color: #14532d;
+  color: var(--cream-pure);
+  box-shadow: 0 4px 12px rgba(20, 83, 45, 0.25);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   9. Food Cards Grid (White Rounded Cards with Soft Shadows & Hover Lift)
+   -------------------------------------------------------------------------- */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 2rem;
+}
+
+/* Individual Food Card */
+.food-card {
+  background-color: var(--cream-pure);
+  border: 1px solid rgba(20, 83, 45, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top decorative color bar for food vibe */
+.food-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green-mid) 0%, var(--green-bright) 50%, var(--cream-gold) 100%);
+  opacity: 0.85;
+}
+
+.food-card:hover {
+  transform: translateY(-6px) scale(1.008);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(20, 83, 45, 0.22);
+}
+
+/* Claimed Card State */
+.food-card.is-claimed {
+  opacity: 0.72;
+  background-color: #fbfbfc;
+  border-color: var(--gray-200);
+}
+
+.food-card.is-claimed::before {
+  background: var(--gray-300);
+}
+
+.food-card.is-claimed:hover {
+  transform: none;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Card Header: Category & Status Badges */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 1.15rem;
+}
+
+.tag-category {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  background-color: var(--green-tint);
+  color: var(--green-darkest);
+  border: 1px solid rgba(20, 83, 45, 0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tag-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.28rem 0.75rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tag-status.available {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #14532d;
+  border: 1px solid #86efac;
+}
+
+.tag-status.available::before {
+  content: '●';
+  color: #16a34a;
+  font-size: 0.7rem;
+}
+
+.tag-status.claimed {
+  background-color: var(--gray-200);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-300);
+}
+
+.card-title {
+  font-size: 1.32rem;
+  font-weight: 800;
+  color: var(--green-darkest);
+  margin-bottom: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* Food Details with Icon Containers */
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.35rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+}
+
+/* Attractive food icon styling */
+.detail-icon {
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  background: linear-gradient(135deg, var(--green-wash) 0%, var(--cream-100) 100%);
+  border: 1px solid rgba(20, 83, 45, 0.1);
+  color: var(--green-dark);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(20, 83, 45, 0.06);
+  transition: transform 0.25s ease;
+}
+
+.food-card:hover .detail-icon {
+  transform: scale(1.08);
+}
+
+.detail-value {
+  color: var(--gray-900);
+  font-weight: 700;
+}
+
+.card-notes {
+  background: linear-gradient(135deg, var(--cream-50) 0%, var(--cream-100) 100%);
+  border-left: 3.5px solid var(--green-mid);
+  padding: 0.75rem 0.9rem;
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 1.35rem;
+  font-style: italic;
+  border-top: 1px solid rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--cream-200);
+}
+
+.posted-time {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.posted-time::before {
+  content: '🕒';
+  font-size: 0.85rem;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Dark Green Claim Button */
+.btn-claim {
+  background: linear-gradient(145deg, #166534 0%, #14532d 100%);
+  color: var(--cream-pure);
+  border: none;
+  padding: 0.52rem 1.15rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(20, 83, 45, 0.25);
+  transition: var(--transition);
+}
+
+.btn-claim:hover {
+  background: linear-gradient(145deg, #14532d 0%, #0d3b1f 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(20, 83, 45, 0.35);
+}
+
+.btn-claimed {
+  background-color: var(--gray-200);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-300);
+  padding: 0.52rem 1.15rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-claimed:hover {
+  background-color: var(--danger-light);
+  color: var(--danger);
+  border-color: #fda4af;
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background: var(--cream-surface);
+  border: 1px solid var(--gray-200);
+  color: var(--gray-400);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-delete:hover {
+  background-color: var(--danger-light);
+  color: var(--danger);
+  border-color: #fda4af;
+  transform: translateY(-2px);
+}
+
+.btn-delete svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  background-color: var(--cream-pure);
+  border-radius: var(--radius-lg);
+  border: 2px dashed rgba(20, 83, 45, 0.2);
+  grid-column: 1 / -1;
+  box-shadow: var(--shadow-soft);
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+.empty-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.35rem;
+  background: linear-gradient(135deg, var(--green-tint) 0%, var(--cream-amber) 100%);
+  color: var(--green-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(20, 83, 45, 0.1);
+}
+
+.empty-icon-wrap svg {
+  width: 36px;
+  height: 36px;
+}
+
+.empty-state h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--green-darkest);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--gray-600);
+  max-width: 480px;
+  margin: 0 auto 1.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. How It Works Section (White Rounded Cards with Step Badges)
+   -------------------------------------------------------------------------- */
+.how-it-works-section {
+  border-top: 1px solid rgba(20, 83, 45, 0.08);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem;
+}
+
+.step-card {
+  background-color: var(--cream-pure);
+  border: 1px solid rgba(20, 83, 45, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.85rem;
+  position: relative;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow-card);
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(20, 83, 45, 0.2);
+}
+
+.step-badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(145deg, #166534 0%, #14532d 100%);
+  color: var(--cream-pure);
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(20, 83, 45, 0.35);
+  border: 2px solid var(--cream-pure);
+}
+
+.step-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0.85rem auto 1.35rem;
+  background: linear-gradient(135deg, var(--green-tint) 0%, var(--cream-amber) 100%);
+  color: var(--green-dark);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(20, 83, 45, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+.step-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.step-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--green-darkest);
+  margin-bottom: 0.75rem;
+}
+
+.step-card p {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   11. Footer (Deep Forest Green Accent)
+   -------------------------------------------------------------------------- */
+.footer {
+  background: linear-gradient(180deg, #0b2e19 0%, #061e10 100%);
+  color: #d1fae5;
+  margin-top: auto;
+  padding: 4.5rem 1.5rem 2.25rem;
+  border-top: 3px solid var(--green-mid);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 3.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-brand {
+  max-width: 420px;
+}
+
+.footer-brand .brand-logo {
+  color: #ffffff;
+  margin-bottom: 1.15rem;
+}
+
+.footer-brand .brand-logo .logo-icon {
+  color: var(--green-mint);
+}
+
+.footer-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #a7f3d0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 4.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 1.35rem;
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: var(--green-mint);
+  border-radius: var(--radius-full);
+}
+
+.footer-col a {
+  display: block;
+  font-size: 0.92rem;
+  color: #a7f3d0;
+  margin-bottom: 0.75rem;
+  transition: var(--transition);
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: #6ee7b7;
+}
+
+/* --------------------------------------------------------------------------
+   12. Interactive Toast Notification
+   -------------------------------------------------------------------------- */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--green-darkest);
+  color: var(--cream-pure);
+  padding: 0.95rem 1.55rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  font-size: 0.95rem;
+  font-weight: 700;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.toast.toast-success {
+  border-left: 5px solid var(--green-bright);
+}
+
+.toast.toast-danger {
+  border-left: 5px solid var(--danger);
+}
+
+/* --------------------------------------------------------------------------
+   13. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 2.85rem;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+  .hero-stats {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-cta {
+    padding: 0.55rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .hero-section {
+    padding: 3.75rem 1.25rem 3.25rem;
+  }
+
+  .hero-title {
+    font-size: 2.35rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-section {
+    padding: 2.25rem 1.35rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-submit,
+  .btn-outline {
+    width: 100%;
+  }
+
+  .listings-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    gap: 2.5rem;
+  }
+
+  .toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    text-align: center;
+    justify-content: center;
+  }
+}

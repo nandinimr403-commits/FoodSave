@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodSave | Save Food, Feed Hope</title>
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span>Food<strong>Save</strong></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#listings">Available Food</a>
+        <a href="#share">Share Food</a>
+        <a href="#how-it-works">How It Works</a>
+      </nav>
+
+      <a href="#share" class="btn btn-primary nav-cta">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Share Surplus Food
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">🌱 Campus Food Rescue Initiative</div>
+      <h1 class="hero-title">Save Food, Feed Hope</h1>
+      <p class="hero-subtitle">
+        Have extra food from a campus event, club meeting, or your dorm kitchen? Share it instantly with fellow students. Together, we can eradicate campus food waste and support each other.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#share" class="btn btn-primary btn-lg">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <line x1="19" y1="8" x2="19" y2="14"></line>
+            <line x1="22" y1="11" x2="16" y2="11"></line>
+          </svg>
+          Post Extra Food
+        </a>
+        <a href="#listings" class="btn btn-secondary btn-lg">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          Find Available Food
+        </a>
+      </div>
+
+      <!-- Quick Impact Stats -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-number" id="stat-saved">150+</span>
+          <span class="stat-label">Meals Shared</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-active">0</span>
+          <span class="stat-label">Live Listings</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Free For Students</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+
+    <!-- Form Section -->
+    <section id="share" class="section-container form-section">
+      <div class="section-header">
+        <span class="subheading">Give Back</span>
+        <h2>Share Surplus Food</h2>
+        <p>Post leftover food in seconds so a nearby hungry student can pick it up before it goes to waste.</p>
+      </div>
+
+      <div class="form-wrapper">
+        <form id="food-form" class="food-form" novalidate>
+          <div class="form-grid">
+            
+            <!-- Food Name -->
+            <div class="form-group full-width">
+              <label for="food-name">Food Item Name <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                  <line x1="6" y1="1" x2="6" y2="4"></line>
+                  <line x1="10" y1="1" x2="10" y2="4"></line>
+                  <line x1="14" y1="1" x2="14" y2="4"></line>
+                </svg>
+                <input 
+                  type="text" 
+                  id="food-name" 
+                  placeholder="e.g., Veggie Pizza, Fresh Pasta & Garlic Bread" 
+                  required
+                >
+              </div>
+              <small class="error-msg" id="name-error">Please provide the name of the food item.</small>
+            </div>
+
+            <!-- Food Category / Type -->
+            <div class="form-group">
+              <label for="food-category">Food Category <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <select id="food-category" required>
+                  <option value="Vegetarian">🥗 Vegetarian</option>
+                  <option value="Vegan">🌱 Vegan</option>
+                  <option value="Non-Vegetarian">🍗 Non-Vegetarian</option>
+                  <option value="Bakery & Snacks">🥐 Bakery & Snacks</option>
+                  <option value="Beverages & Fruit">🍎 Beverages & Fruit</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Quantity -->
+            <div class="form-group">
+              <label for="food-quantity">Quantity / Servings <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
+                <input 
+                  type="text" 
+                  id="food-quantity" 
+                  placeholder="e.g., 3 servings, 1 whole box, 4 slices" 
+                  required
+                >
+              </div>
+              <small class="error-msg" id="quantity-error">Please specify the quantity or portions.</small>
+            </div>
+
+            <!-- Location -->
+            <div class="form-group">
+              <label for="food-location">Pickup Location <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <input 
+                  type="text" 
+                  id="food-location" 
+                  placeholder="e.g., Student Union Room 204, North Dorm Lounge" 
+                  required
+                >
+              </div>
+              <small class="error-msg" id="location-error">Please specify a clear campus location.</small>
+            </div>
+
+            <!-- Pickup Time -->
+            <div class="form-group">
+              <label for="food-time">Available Until / Pickup Time <span class="required">*</span></label>
+              <div class="input-with-icon">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <input 
+                  type="text" 
+                  id="food-time" 
+                  placeholder="e.g., Today by 9:30 PM, Next 1 hour" 
+                  required
+                >
+              </div>
+              <small class="error-msg" id="time-error">Please provide the pickup deadline or time.</small>
+            </div>
+
+            <!-- Additional Notes / Contact Info (Optional) -->
+            <div class="form-group full-width">
+              <label for="food-notes">Special Instructions or Notes (Optional)</label>
+              <textarea 
+                id="food-notes" 
+                rows="2" 
+                placeholder="e.g., Packaged in clean containers. Knock on room 312 or message on WhatsApp."
+              ></textarea>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+              </svg>
+              Post Food Listing
+            </button>
+            <button type="reset" class="btn btn-outline" id="reset-btn">Clear Form</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Listings Section -->
+    <section id="listings" class="section-container listings-section">
+      <div class="listings-header-row">
+        <div>
+          <span class="subheading">Live Board</span>
+          <h2>Available Food Listings</h2>
+          <p>Browse fresh surplus food items available right now on campus.</p>
+        </div>
+        
+        <!-- Quick stats summary -->
+        <div class="listings-pill">
+          <span class="dot-indicator"></span>
+          <span id="active-count-label">0 items available</span>
+        </div>
+      </div>
+
+      <!-- Controls: Search & Category Filters -->
+      <div class="controls-bar">
+        <!-- Search Input -->
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Search by food name or campus location..."
+          >
+          <button type="button" id="clear-search-btn" class="clear-search-btn" aria-label="Clear search" title="Clear search">&times;</button>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="filter-pills" id="filter-pills">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="available">Available Only</button>
+          <button class="filter-btn" data-filter="Vegetarian">🥗 Vegetarian</button>
+          <button class="filter-btn" data-filter="Vegan">🌱 Vegan</button>
+          <button class="filter-btn" data-filter="Non-Vegetarian">🍗 Non-Veg</button>
+          <button class="filter-btn" data-filter="claimed">Claimed</button>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div id="food-grid" class="food-grid">
+        <!-- Dynamically rendered via script.js -->
+      </div>
+
+      <!-- Empty State (Shown when no items match) -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+          </svg>
+        </div>
+        <h3>No Food Listings Found</h3>
+        <p>No listings match your search or filter. Try a different query or be the first to post food!</p>
+        <a href="#share" class="btn btn-primary btn-sm">Share Food Now</a>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section-container how-it-works-section">
+      <div class="section-header">
+        <span class="subheading">Simple & Effective</span>
+        <h2>How FoodSave Works</h2>
+        <p>Bridging the gap between leftover food and hungry campus students in 3 easy steps.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </div>
+          <h3>List Surplus Food</h3>
+          <p>Club event finished? Bought extra groceries? Fill the quick form with pickup location, quantity, and time.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3>Students Find & Claim</h3>
+          <p>Fellow campus students browse the real-time board, claim an item, and follow the pickup instructions.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3>Pick Up & Reduce Waste</h3>
+          <p>Food is eaten instead of trashed. You feed hope, protect the planet, and save a peer some money.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+          <span>Food<strong>Save</strong></span>
+        </div>
+        <p class="footer-desc">
+          "Save Food, Feed Hope" — A student-led campus initiative for zero food waste and community hunger relief.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="#home">Home</a>
+          <a href="#listings">Food Listings</a>
+          <a href="#share">Share Food</a>
+          <a href="#how-it-works">How It Works</a>
+        </div>
+        <div class="footer-col">
+          <h4>Campus Guidelines</h4>
+          <a href="#">Food Safety Tips</a>
+          <a href="#">Packaging Recommendations</a>
+          <a href="#">Campus Pickup Zones</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year"></span> FoodSave. Built for campus communities. Stored securely in your local browser.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript logic -->
+  <script src="script.js"></script>
+</body>
+</html>
